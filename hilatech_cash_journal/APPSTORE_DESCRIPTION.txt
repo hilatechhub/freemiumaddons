@@ -1,0 +1,249 @@
+========================================================================
+CASH JOURNAL - GESTION PROFESSIONNELLE DE CAISSE POUR ODOO 19
+========================================================================
+
+📋 RÉSUMÉ COURT
+===============
+
+Cash Journal est la solution complète de gestion de caisse pour Odoo 19.
+Relevés mensuels automatisés, opérations quotidiennes sécurisées, rapports
+professionnels en PDF/Excel, et workflow intuitif.
+
+Idéal pour: Restaurants • Hôtels • Commerces • Services
+
+---
+
+✨ POINTS CLÉS
+==============
+
+✓ Relevés mensuels avec numérotation automatique
+✓ Workflow quotidien: Ouvrir → Saisir → Clôturer
+✓ Solde intelligent hérité du relevé précédent
+✓ Opérations verrouillées après clôture
+✓ Rapports PDF professionnels avec colors company
+✓ Export Excel formaté automatiquement
+✓ Vue analytique avec graphiques
+✓ Multilingue: FR • EN • ES
+✓ Sécurité avancée (2 rôles utilisateurs)
+✓ Traçabilité complète des modifications
+
+---
+
+🎯 CAS D'USAGE PRINCIPAUX
+=========================
+
+🏨 RESTAURANTS & HÔTELS
+  • Gestion quotidienne de la caisse
+  • Rapprochement de fin de journée
+  • Suivi des versements
+  • Intégration avec module POS
+
+🏪 COMMERCES DE DÉTAIL
+  • Enregistrement centralisé des mouvements
+  • Contrôle de stock monétaire
+  • Audit régulier
+  • Conformité réglementaire
+
+💼 SERVICES & PRESTATIONS
+  • Gestion des encaissements
+  • Traçabilité financière
+  • Rapports pour comptabilité
+  • Justification des mouvements
+
+---
+
+🔧 DÉTAILS TECHNIQUES
+=====================
+
+Version: 19.0.1.0.0
+Licence: LGPL-3
+Odoo Version: 19.0
+Dépendances: base, account, mail (modules standards Odoo)
+
+Modèles inclus:
+  • cash.journal.report (Relevé mensuel)
+  • cash.journal.operation (Opération quotidienne)
+  • cash.journal.pdf.report (Wizard de rapports - transient)
+
+---
+
+🌍 LANGUES SUPPORTÉES
+=====================
+
+✓ Français (fr_FR) - Complet avec aides
+✓ Anglais (en_US) - Complet
+✓ Espagnol (es_ES) - Complet
+
+(Traductions additionnelles disponibles sur demande)
+
+---
+
+📊 FONCTIONNALITÉS DÉTAILLÉES
+==============================
+
+RELEVÉS MENSUELS
+  ✓ Création automatique
+  ✓ Numérotation JRN/ANNÉE/NUMÉRO
+  ✓ Solde initial intelligent
+  ✓ Solde final calculé automatiquement
+  ✓ États: Ouvert / Clôturé
+  ✓ Protection contre modifications après clôture
+
+OPÉRATIONS QUOTIDIENNES
+  ✓ Entrées (+) et Sorties (-) de caisse
+  ✓ Date, Description, Bénéficiaire, Montant
+  ✓ Classification automatique (Entrée/Sortie/Neutre)
+  ✓ Verrouillage après clôture du jour
+  ✓ Protection write() et unlink()
+
+WORKFLOWS & ACTIONS
+  ✓ Ouvrir la caisse (active la saisie)
+  ✓ Clôturer la caisse du jour (verrouille opérations)
+  ✓ Clôturer le relevé mensuel (fermeture définitive)
+
+RAPPORTS & EXPORTS
+  ✓ Rapport PDF professionnel (Qweb)
+  ✓ Export Excel détaillé
+  ✓ Filtrage par plage de dates
+  ✓ Couleurs company branding
+  ✓ Résumés automatiques
+  ✓ Sans numéros de page
+
+VUES & ANALYTICS
+  ✓ Liste complète des opérations
+  ✓ Graphique en barres (sommes par relevé)
+  ✓ Filtres de recherche avancés
+  ✓ Décoration couleur (statuts)
+
+SÉCURITÉ & PERMISSIONS
+  ✓ Deux rôles: Utilisateur & Gestionnaire
+  ✓ Permissions granulaires CRUD
+  ✓ Verrouillage automatique des données
+  ✓ Traçabilité des modifications
+  ✓ Historique complet
+
+---
+
+📈 AVANTAGES BUSINESS
+=====================
+
+✓ Réduction du temps de réconciliation de caisse
+✓ Élimination des erreurs manuelles
+✓ Conformité réglementaire assurée
+✓ Traçabilité financière complète
+✓ Rapports professionnels en 1 clic
+✓ Contrôle d'accès sécurisé
+✓ Intégration native avec Odoo
+✓ Support multilingue
+✓ Évolutif (PME à grandes structures)
+✓ ROI rapide
+
+---
+
+🚀 INSTALLATION FACILE
+======================
+
+1. Installer le module via Odoo Apps
+2. Activer et configurer les permissions utilisateurs
+3. Créer le premier relevé mensuel
+4. Les séquences se créent automatiquement
+5. Commencer à saisir les opérations
+
+Pas de configuration complexe requise!
+
+---
+
+📞 SUPPORT & CONTACT
+====================
+
+Hilatech: Partenaire ERP Odoo Certifié
+
+Email:    support@hilatech.co
+Web:      https://hilatech.co
+GitHub:   https://github.com/hilatech
+Tél:      +1 (855) HILATECH (disponibilité selon région)
+
+Services disponibles:
+  • Support technique réactif
+  • Formation utilisateurs
+  • Implémentation personnalisée
+  • Maintenance & évolutions
+
+---
+
+✅ TESTS & QUALITÉ
+==================
+
+Module complètement testé et en production
+  ✓ Workflow validé
+  ✓ Protections testées
+  ✓ Exports (PDF/Excel) vérifiés
+  ✓ Multilingue fonctionnel
+  ✓ Permissions confirmées
+  ✓ Performance optimisée
+
+Aucun problème critique connu.
+
+---
+
+🏆 HILATECH - QUI SOMMES-NOUS?
+===============================
+
+Hilatech est un cabinet de conseil expert en solutions ERP Odoo.
+
+SERVICES:
+  ✓ Implémentation Odoo complète
+  ✓ Développement de modules custom
+  ✓ Intégration d'écosystèmes
+  ✓ Formation utilisateurs
+  ✓ Support & maintenance
+  ✓ Conseil en processus métier
+  ✓ Migration depuis autres ERP
+  ✓ Audit de performance
+
+EXPERTISE:
+  ✓ 10+ années d'expérience Odoo
+  ✓ Équipe de consultants certifiés
+  ✓ Approche client-centric
+  ✓ Méthodologie agile
+  ✓ Support technique 24/7 (plans premium)
+
+CLIENTS TYPES:
+  • PME et ETI
+  • Groupes multinationaux
+  • Secteur HoReCa
+  • Commerce de détail
+  • Services & Prestations
+
+---
+
+📝 LICENCE & CONDITIONS
+=======================
+
+Licence: LGPL-3
+Auteur: Hilatech
+Support: Gratuit (communauté) + Premium (contrats)
+Mise à jour: Régulière et gratuite
+Documentation: Complète et en français
+
+---
+
+🎁 BONUS
+========
+
+Chaque installation inclut:
+  ✓ Documentation complète (FR/EN/ES)
+  ✓ Templates de rapports personnalisables
+  ✓ Guide d'intégration avec modules Odoo
+  ✓ Support email première assistance
+  ✓ Accès à webinaires d'utilisation
+
+---
+
+PRÊT À OPTIMISER VOTRE GESTION DE CAISSE?
+
+Contactez Hilatech aujourd'hui!
+support@hilatech.com
+https://hilatech.com
+
+========================================================================

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Journal - Gestión Profesional de Caja para Odoo 19</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1f4788 0%, #2d5da3 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        /* Main Content */
+        main {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: #1f4788;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #2d5da3;
+        }
+
+        h3 {
+            color: #2d5da3;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #2d5da3;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h4 {
+            color: #1f4788;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .feature-card li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2d5da3;
+            font-weight: bold;
+        }
+
+        /* Use Cases */
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .use-case {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 8px;
+            border-top: 4px solid #2d5da3;
+        }
+
+        .use-case-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .use-case h4 {
+            color: #1f4788;
+            margin-bottom: 10px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        th {
+            background: #1f4788;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Company Section */
+        .company-section {
+            background: linear-gradient(135deg, #1f4788 0%, #2d5da3 100%);
+            color: white;
+            padding: 60px 20px;
+            margin: 50px 0;
+            border-radius: 8px;
+        }
+
+        .company-section h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+
+        .company-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .company-about h3,
+        .company-about h4 {
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .services-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .services-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .services-list li:before {
+            content: "★";
+            position: absolute;
+            left: 0;
+            color: #ffb100;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .tech-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1f4788 0%, #2d5da3 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(31, 71, 136, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1f4788;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #ffb100;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .company-content {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .use-cases {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>💰 Cash Journal</h1>
+            <p>Gestión Profesional de Caja para Odoo 19</p>
+            <div class="version-badge">
+                Versión 19.0.1.0.0 • Odoo 19 • LGPL-3
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Introduction -->
+            <section>
+                <h2>📋 Acerca de Este Módulo</h2>
+                <p>
+                    <strong>Cash Journal</strong> es una solución ERP completa y profesional para la gestión integrada
+                    del flujo de caja. Diseñado para funcionar perfectamente con Odoo, este módulo ofrece un flujo de
+                    trabajo intuitivo, informes detallados y trazabilidad financiera robusta.
+                </p>
+                <p style="margin-top: 15px;">
+                    Ya sea que gestione un restaurante, una tienda minorista o un negocio de servicios, Cash Journal
+                    simplifica el control de caja mientras asegura el cumplimiento normativo y la seguridad de datos.
+                </p>
+            </section>
+
+            <!-- Key Features -->
+            <section>
+                <h2>✨ Características Principales</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>📊 Informes Mensuales</h4>
+                        <ul>
+                            <li>Numeración secuencial automática</li>
+                            <li>Saldo inicial inteligente (heredado)</li>
+                            <li>Cálculo automático del saldo final</li>
+                            <li>Protección contra modificaciones</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>📝 Operaciones Diarias</h4>
+                        <ul>
+                            <li>Entradas y salidas simplemente firmadas</li>
+                            <li>Descripción y beneficiario</li>
+                            <li>Clasificación automática</li>
+                            <li>Bloqueo después del cierre</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🔄 Flujo de Trabajo Integrado</h4>
+                        <ul>
+                            <li>Abrir caja del día</li>
+                            <li>Registrar operaciones</li>
+                            <li>Cerrar caja del día</li>
+                            <li>Cerrar informe mensual</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>📑 Operaciones Analíticas</h4>
+                        <ul>
+                            <li>Vista de lista completa de operaciones</li>
+                            <li>Filtrado por tipo y estado</li>
+                            <li>Análisis de gráficos de barras</li>
+                            <li>Visualización total por informe</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>📊 Informes Profesionales</h4>
+                        <ul>
+                            <li>Exportación Excel con formato</li>
+                            <li>Informe PDF profesional</li>
+                            <li>Colores de marca de empresa</li>
+                            <li>Resúmenes automáticos</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🔒 Seguridad y Control</h4>
+                        <ul>
+                            <li>Dos roles de usuario</li>
+                            <li>Permisos granulares</li>
+                            <li>Registro de auditoría completo</li>
+                            <li>Protección de datos</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Use Cases -->
+            <section>
+                <h2>🎯 Casos de Uso</h2>
+                <div class="use-cases">
+                    <div class="use-case">
+                        <div class="use-case-icon">🏨</div>
+                        <h4>Restaurantes y Hoteles</h4>
+                        <p>Gestión diaria de caja, reconciliación de fin de día, seguimiento de depósitos, integración POS</p>
+                    </div>
+
+                    <div class="use-case">
+                        <div class="use-case-icon">🏪</div>
+                        <h4>Tiendas Minoristas</h4>
+                        <p>Registro centralizado, control de flujo de caja, auditorías regulares, cumplimiento normativo</p>
+                    </div>
+
+                    <div class="use-case">
+                        <div class="use-case-icon">💼</div>
+                        <h4>Servicios y Consultoría</h4>
+                        <p>Gestión de ingresos, trazabilidad financiera, informes contables, justificación de movimientos</p>
+                    </div>
+
+                    <div class="use-case">
+                        <div class="use-case-icon">🏢</div>
+                        <h4>PYMES y Franquicias</h4>
+                        <p>Gestión multi-sitio, consolidación de datos, informes centralizados, visión financiera general</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical Details -->
+            <section>
+                <h2>🔧 Detalles Técnicos</h2>
+
+                <h3>Modelos de Datos</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modelo</th>
+                            <th>Descripción</th>
+                            <th>Campos Clave</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>cash.journal.report</strong></td>
+                            <td>Informe mensual de caja</td>
+                            <td>Número, Mes, Saldo Inicial/Final, Estado, Operaciones</td>
+                        </tr>
+                        <tr>
+                            <td><strong>cash.journal.operation</strong></td>
+                            <td>Operación diaria</td>
+                            <td>Fecha, Descripción, Monto, Beneficiario, Bloqueo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>cash.journal.pdf.report</strong></td>
+                            <td>Asistente de informes (transitorio)</td>
+                            <td>Fecha Inicio, Fecha Fin, Empresa, Exportar</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Dependencias</h3>
+                <div class="tech-stack">
+                    <p><strong>Este módulo depende solo de módulos estándar de Odoo:</strong></p>
+                    <div class="tech-items">
+                        <div class="tech-item">base</div>
+                        <div class="tech-item">account</div>
+                        <div class="tech-item">mail</div>
+                    </div>
+                </div>
+
+                <h3>Soporte Multilingüe</h3>
+                <p>El módulo incluye traducciones completas para:</p>
+                <div class="tech-items">
+                    <div class="tech-item">🇫🇷 Francés (fr_FR)</div>
+                    <div class="tech-item">🇬🇧 Inglés (en_US)</div>
+                    <div class="tech-item">🇪🇸 Español (es_ES)</div>
+                </div>
+            </section>
+
+            <!-- Company Section -->
+            <section class="company-section">
+                <h2>Acerca de Hilatech</h2>
+                <div class="company-content">
+                    <div class="company-about">
+                        <p>
+                            <strong>Hilatech</strong> es una firma de consultoría especializada en la implementación y desarrollo
+                            de soluciones ERP Odoo de alto nivel. Con experiencia reconocida durante más de 10 años, ayudamos
+                            a las empresas a optimizar sus procesos comerciales a través de Odoo.
+                        </p>
+
+                        <h4>🎯 Nuestra Misión</h4>
+                        <p>
+                            Proporcionar soluciones ERP confiables, escalables y fáciles de usar que respalden el crecimiento
+                            de nuestros clientes.
+                        </p>
+
+                        <h4>💪 Nuestras Fortalezas</h4>
+                        <ul class="services-list">
+                            <li>Experiencia Odoo certificada</li>
+                            <li>Desarrollo personalizado robusto</li>
+                            <li>Soporte técnico receptivo</li>
+                            <li>Implementación ágil</li>
+                            <li>Enfoque orientado al cliente</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4>Servicios Hilatech</h4>
+                        <ul class="services-list">
+                            <li><strong>Implementación Odoo</strong> - Despliegue de soluciones completas</li>
+                            <li><strong>Desarrollo Personalizado</strong> - Módulos y extensiones personalizadas</li>
+                            <li><strong>Integraciones</strong> - Conexión de ecosistemas de software</li>
+                            <li><strong>Formación</strong> - Capacitación de usuarios y administradores</li>
+                            <li><strong>Soporte y Mantenimiento</strong> - Soporte técnico y evolutivo</li>
+                            <li><strong>Consultoría</strong> - Optimización de procesos comerciales</li>
+                            <li><strong>Migración</strong> - Transición a Odoo</li>
+                            <li><strong>Rendimiento</strong> - Auditoría y optimización de instancias</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; text-align: center; border-top: 2px solid rgba(255,255,255,0.2); padding-top: 30px;">
+                    <h4 style="color: white; margin-bottom: 15px;">Contáctenos</h4>
+                    <p style="margin: 10px 0;">📧 <strong>Correo:</strong> support@hilatech.co</p>
+                    <p style="margin: 10px 0;">🌐 <strong>Sitio Web:</strong> https://hilatech.co</p>
+                    <p style="margin: 10px 0;">📞 <strong>Soporte:</strong> support@hilatech.co</p>
+                </div>
+            </section>
+
+            <!-- Benefits -->
+            <section>
+                <h2>✅ Beneficios del Módulo</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>Facilidad de Uso</h4>
+                        <p>Interfaz intuitiva y fácil de usar, sin curva de aprendizaje pronunciada.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Confiabilidad</h4>
+                        <p>Cálculos automáticos y verificados, datos protegidos y trazables.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Cumplimiento</h4>
+                        <p>Cumple con normas contables y regulatorias.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Escalabilidad</h4>
+                        <p>Adecuado para PYMES como para grandes empresas con operaciones multi-sitio.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Integración</h4>
+                        <p>Funciona perfectamente con el ecosistema completo de Odoo.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Soporte Multilingüe</h4>
+                        <p>Francés, Inglés, Español integrados y traducidos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="cta-section">
+                <h2>¿Listo para Optimizar su Gestión de Caja?</h2>
+                <p style="margin: 20px 0; font-size: 1.1em;">
+                    Cash Journal transforma su gestión de caja en un proceso simple y seguro.
+                </p>
+                <a href="mailto:support@hilatech.co" class="cta-button">📧 Contáctenos</a>
+                <a href="https://hilatech.co" class="cta-button">🌐 Visite Nuestro Sitio</a>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Cash Journal - Hilatech</h3>
+            <p>Gestión Profesional de Caja para Odoo 19</p>
+
+            <div class="footer-links">
+                <a href="https://hilatech.co">Sitio Web</a>
+                <a href="mailto:support@hilatech.co">Soporte</a>
+                <a href="https://github.com/hilatech">GitHub</a>
+            </div>
+
+            <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
+                <strong>© 2024 Hilatech - Todos los derechos reservados</strong><br>
+                Licencia LGPL-3 • Compatible con Odoo 19<br>
+                <em>"Excelencia en Soluciones ERP"</em>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
